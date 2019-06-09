@@ -1,7 +1,6 @@
 package com.example.bluexmax.studyec;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
 import com.example.latte.ec.icon.FontEcModule;
 import com.example.latte_core.app.Latte;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
