@@ -1,5 +1,18 @@
 apply plugin: 'com.android.application'
 
+//    解决第三方库版本不兼容的问题，向高版本号靠拢,
+//    强制所有依赖包使用相同的库版本，28.0.0
+configurations.all{
+    resolutionStrategy.eachDependency{ details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '28.0.0'
+            }
+        }
+    }
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -16,6 +29,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    
 }
 
 dependencies {
@@ -25,6 +40,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':latte-ec')
+    implementation project(path:  ':latte-ec')
+    implementation project(path:  ':latte-core')
     annotationProcessor project(':latte-compiler')
+    
 }
