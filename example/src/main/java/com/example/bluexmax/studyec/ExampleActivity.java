@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.example.latte.ec.launcher.LauncherDelegate;
 import com.example.latte.ec.launcher.LauncherScrollDelegate;
+import com.example.latte.ec.sign.SignUpDelegate;
 import com.example.latte_core.activities.ProxyActivity;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.delegates.LatteDelegate;
@@ -23,6 +24,6 @@ public class ExampleActivity extends ProxyActivity {
 
     @Override
     public LatteDelegate setRootDelegate(){
-        return new LauncherDelegate();
+        return new SignUpDelegate();
     }
 }
