@@ -15,6 +15,7 @@ import com.example.latte_core.app.Latte;
 import com.example.latte_core.delegates.LatteDelegate;
 import com.example.latte_core.ui.launcher.ILauncherListener;
 import com.example.latte_core.ui.launcher.OnLauncherFinishTag;
+import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements
         ISignListener,
@@ -29,6 +30,8 @@ public class ExampleActivity extends ProxyActivity implements
         }
 //        全局Activity
         Latte.getConfigurator().withActivity(this);
+        //沉浸式状态栏
+        StatusBarCompat.translucentStatusBar(this,true);
     }
 
 //    最开始启动的activity
@@ -55,7 +58,7 @@ public class ExampleActivity extends ProxyActivity implements
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
 //                getSupportDelegate().startWithPop(new SignInDelegate());
 //                测试用，登陆先不做
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
