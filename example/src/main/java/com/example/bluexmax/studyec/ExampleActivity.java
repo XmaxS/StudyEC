@@ -25,6 +25,8 @@ public class ExampleActivity extends ProxyActivity implements
         if (actionBar!=null){
             actionBar.hide();
         }
+//        全局Activity
+        Latte.getConfigurator().withActivity(this);
     }
 
     @Override

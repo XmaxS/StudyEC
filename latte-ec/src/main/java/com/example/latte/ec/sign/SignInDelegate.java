@@ -18,6 +18,8 @@ import com.example.latte_core.delegates.LatteDelegate;
 import com.example.latte_core.net.RestClient;
 import com.example.latte_core.net.callback.ISuccess;
 import com.example.latte_core.util.log.LatteLogger;
+import com.example.latte_core.wechat.LatteWeChat;
+import com.example.latte_core.wechat.callbacks.IWeChatSignInCallback;
 
 
 public class SignInDelegate extends LatteDelegate {
@@ -56,18 +58,18 @@ public class SignInDelegate extends LatteDelegate {
         }
     }
 
-//    @OnClick(R2.id.icon_sign_in_wechat)
-//    void onClickWeChat() {
-//        LatteWeChat
-//                .getInstance()
-//                .onSignSuccess(new IWeChatSignInCallback() {
-//                    @Override
-//                    public void onSignInSuccess(String userInfo) {
-//                        Toast.makeText(getContext(), userInfo, Toast.LENGTH_LONG).show();
-//                    }
-//                })
-//                .signIn();
-//    }
+    @OnClick(R2.id.icon_sign_in_wechat)
+    void onClickWeChat() {
+        LatteWeChat
+                .getInstance()
+                .onSignSuccess(new IWeChatSignInCallback() {
+                    @Override
+                    public void onSignInSuccess(String userInfo) {
+                        Toast.makeText(getContext(), userInfo, Toast.LENGTH_LONG).show();
+                    }
+                })
+                .signIn();
+    }
 
 //    如果还没注册，启动注册界面
     @OnClick(R2.id.tv_link_sign_up)
