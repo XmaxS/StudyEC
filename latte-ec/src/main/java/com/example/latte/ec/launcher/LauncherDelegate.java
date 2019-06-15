@@ -15,7 +15,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
+import com.example.latte_core.app.AccountManager;
+import com.example.latte_core.app.IUserChecker;
 import com.example.latte_core.delegates.LatteDelegate;
+import com.example.latte_core.ui.launcher.ILauncherListener;
+import com.example.latte_core.ui.launcher.OnLauncherFinishTag;
 import com.example.latte_core.ui.launcher.ScrollLauncherTag;
 import com.example.latte_core.util.storage.LattePreference;
 import com.example.latte_core.util.timer.BaseTimerTask;
@@ -30,7 +34,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     private Timer mTimer = null;
 //    倒计时的数字
     private int mCount = 5;
-//    private ILauncherListener mILauncherListener = null;
+    private ILauncherListener mILauncherListener = null;
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {
@@ -49,13 +53,13 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         mTimer.schedule(task, 0, 1000);
     }
 
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        if (activity instanceof ILauncherListener) {
-//            mILauncherListener = (ILauncherListener) activity;
-//        }
-//    }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
+    }
 
     @Override
     public Object setLayout() {
@@ -72,22 +76,22 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
-//            //检查用户是否登录了APP
-//            AccountManager.checkAccount(new IUserChecker() {
-//                @Override
-//                public void onSignIn() {
-//                    if (mILauncherListener != null) {
-//                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
-//                    }
-//                }
-//
-//                @Override
-//                public void onNotSignIn() {
-//                    if (mILauncherListener != null) {
-//                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
-//                    }
-//                }
-//            });
+            //检查用户是否登录了APP
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
         }
     }
 

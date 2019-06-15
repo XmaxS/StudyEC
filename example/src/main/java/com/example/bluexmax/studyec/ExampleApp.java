@@ -1,6 +1,7 @@
 package com.example.bluexmax.studyec;
 
 import android.app.Application;
+import com.example.latte.ec.database.DatabaseManager;
 import com.example.latte.ec.icon.FontEcModule;
 import com.example.latte_core.app.Latte;
 import com.example.latte_core.net.interceptors.DebugInterceptor;
@@ -20,5 +21,6 @@ public class ExampleApp extends Application {
                 .withApiHost("http://127.0.0.1")
                 .withInterceptor(new DebugInterceptor("index",R.raw.test))
                 .configure();
+        DatabaseManager.getInstance().init(this);
     }
 }
