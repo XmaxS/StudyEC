@@ -31,6 +31,7 @@ public class ExampleActivity extends ProxyActivity implements
         Latte.getConfigurator().withActivity(this);
     }
 
+//    最开始启动的activity
     @Override
     public LatteDelegate setRootDelegate(){
         return new LauncherScrollDelegate();
@@ -54,7 +55,7 @@ public class ExampleActivity extends ProxyActivity implements
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-//                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
 //                getSupportDelegate().startWithPop(new SignInDelegate());
 //                测试用，登陆先不做
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
