@@ -29,7 +29,7 @@ public class ExampleActivity extends ProxyActivity implements
 
     @Override
     public LatteDelegate setRootDelegate(){
-        return new LauncherDelegate();
+        return new LauncherScrollDelegate();
     }
 
     @Override
