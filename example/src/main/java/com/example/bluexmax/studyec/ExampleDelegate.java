@@ -14,6 +14,7 @@ import com.example.latte_core.net.callback.IError;
 import com.example.latte_core.net.callback.IFailure;
 import com.example.latte_core.net.callback.ISuccess;
 
+//这个类好像没什么用了
 public class ExampleDelegate extends LatteDelegate {
 
     @Override
@@ -29,7 +30,7 @@ public class ExampleDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        testRestClient();
+//        testRestClient();
     }
 
     private void testWX() {

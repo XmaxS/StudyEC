@@ -1,7 +1,7 @@
 package com.example.latte_core.ui.camera;
 
 import android.net.Uri;
-import com.example.latte_core.activities.PermissionCheckerDelegate;
+import com.example.latte_core.delegates.PermissionCheckerDelegate;
 import com.example.latte_core.util.file.FileUtil;
 
 
@@ -21,6 +21,6 @@ public class LatteCamera {
         new CameraHandler(delegate).beginCameraDialog();
     }
 
-    public static void start(com.example.latte_core.delegates.PermissionCheckerDelegate permissionCheckerDelegate) {
-    }
+//    public static void start(PermissionCheckerDelegate permissionCheckerDelegate) {
+//    }
 }

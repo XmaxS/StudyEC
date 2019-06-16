@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-//测量
+//测量用
 public class ScreenUtils {
     public static int getScreenWidth(Context context) {
         DisplayMetrics metrics = new DisplayMetrics();

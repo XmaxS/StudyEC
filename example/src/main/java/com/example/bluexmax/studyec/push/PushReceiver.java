@@ -16,6 +16,7 @@ import com.example.bluexmax.studyec.ExampleActivity;
 import com.example.latte_core.util.log.LatteLogger;
 
 
+//推送用的，没实现
 public class PushReceiver extends BroadcastReceiver {
 
     @Override

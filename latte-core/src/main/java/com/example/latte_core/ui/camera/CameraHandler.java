@@ -15,7 +15,7 @@ import android.view.WindowManager;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.example.latte_core.R;
-import com.example.latte_core.activities.PermissionCheckerDelegate;
+import com.example.latte_core.delegates.PermissionCheckerDelegate;
 import com.example.latte_core.util.file.FileUtil;
 
 

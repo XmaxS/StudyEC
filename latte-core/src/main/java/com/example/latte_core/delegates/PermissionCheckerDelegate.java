@@ -26,7 +26,7 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 
-
+//权限判断
 @RuntimePermissions
 public abstract class PermissionCheckerDelegate extends BaseDelegate {
 

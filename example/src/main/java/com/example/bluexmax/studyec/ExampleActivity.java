@@ -68,4 +68,17 @@ public class ExampleActivity extends ProxyActivity implements
         }
 
     }
+
+//    //极光推送
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        JPushInterface.onPause(this);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        JPushInterface.onResume(this);
+//    }
 }
