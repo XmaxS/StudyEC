@@ -16,12 +16,17 @@ import android.widget.Toast;
 import com.example.latte.ec.R;
 import com.example.latte.ec.R2;
 import com.example.latte.ec.main.EcBottomDelegate;
+import com.example.latte.ec.main.index.search.SearchDelegate;
 import com.example.latte_core.delegates.bottom.BottomItemDelegate;
 import com.example.latte_core.net.RestClient;
 import com.example.latte_core.net.callback.ISuccess;
+import com.example.latte_core.ui.recycler.BaseDecoration;
 import com.example.latte_core.ui.recycler.MultipleFields;
 import com.example.latte_core.ui.recycler.MultipleItemEntity;
 import com.example.latte_core.ui.refresh.RefreshHandler;
+import com.example.latte_core.util.callback.CallbackManager;
+import com.example.latte_core.util.callback.CallbackType;
+import com.example.latte_core.util.callback.IGlobalCallback;
 import com.joanzapata.iconify.widget.IconTextView;
 
 import butterknife.BindView;
@@ -46,24 +51,24 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     private RefreshHandler mRefreshHandler = null;
 
-//    @OnClick(R2.id.icon_index_scan)
-//    void onClickScanQrCode() {
-//        startScanWithCheck(this.getParentDelegate());
-//    }
+    @OnClick(R2.id.icon_index_scan)
+    void onClickScanQrCode() {
+        startScanWithCheck(this.getParentDelegate());
+    }
 
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter());
-//        CallbackManager.getInstance()
-//                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
-//                    @Override
-//                    public void executeCallback(@Nullable String args) {
-//                        Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
-//                    }
-//                });
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
+                    @Override
+                    public void executeCallback(@Nullable String args) {
+                        Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
+                    }
+                });
 
-//        mSearchView.setOnFocusChangeListener(this);
+        mSearchView.setOnFocusChangeListener(this);
 
     }
 
@@ -80,8 +85,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
-//        mRecyclerView.addItemDecoration
-//                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
+        mRecyclerView.addItemDecoration
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
@@ -90,7 +95,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
-//        initRecyclerView();
+        initRecyclerView();
         mRefreshHandler.firstPage("index.php");
     }
 
@@ -101,8 +106,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-//        if (hasFocus) {
-//            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
-//        }
+        if (hasFocus) {
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+        }
     }
 }

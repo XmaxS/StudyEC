@@ -8,5 +8,6 @@ public enum MultipleFields {
     SPAN_SIZE, //控制宽度
     ID,
     NAME,
-    TAG
+    TAG,
+    TITLE
 }

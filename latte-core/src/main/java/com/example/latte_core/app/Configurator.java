@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.Utils;
+import com.example.latte_core.delegates.web.event.Event;
+import com.example.latte_core.delegates.web.event.EventManager;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -113,11 +115,11 @@ public final class Configurator {
         return this;
     }
 
-//    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
-//        final EventManager manager = EventManager.getInstance();
-//        manager.addEvent(name, event);
-//        return this;
-//    }
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
+        return this;
+    }
 
     //检查配置项是否完成,保证配置完成性和正确性
     private void checkConfiguration() {

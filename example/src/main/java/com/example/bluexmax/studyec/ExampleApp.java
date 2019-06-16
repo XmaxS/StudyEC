@@ -1,6 +1,8 @@
 package com.example.bluexmax.studyec;
 
 import android.app.Application;
+import com.example.bluexmax.studyec.event.ShareEvent;
+import com.example.bluexmax.studyec.event.TestEvent;
 import com.example.latte.ec.database.DatabaseManager;
 import com.example.latte.ec.icon.FontEcModule;
 import com.example.latte_core.app.Latte;
@@ -22,6 +24,9 @@ public class ExampleApp extends Application {
                 .withInterceptor(new DebugInterceptor("index",R.raw.test))
 //                .withWeChatAppId("")
 //                .withWeChatAppSecret("")
+                .withJavascriptInterface("latte")
+                .withWebEvent("test", new TestEvent())
+                .withWebEvent("share", new ShareEvent())
                 .configure();
         DatabaseManager.getInstance().init(this);
     }
