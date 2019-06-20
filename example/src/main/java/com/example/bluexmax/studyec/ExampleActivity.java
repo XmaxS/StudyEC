@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.latte.ec.launcher.LauncherDelegate;
 import com.example.latte.ec.launcher.LauncherScrollDelegate;
 import com.example.latte.ec.main.EcBottomDelegate;
+import com.example.latte.ec.main.index.IndexDelegate;
 import com.example.latte.ec.sign.ISignListener;
 import com.example.latte.ec.sign.SignInDelegate;
 import com.example.latte.ec.sign.SignUpDelegate;
